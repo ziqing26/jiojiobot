@@ -1,8 +1,12 @@
-
 def parse(update, context):
     arguments = context.args
-    user_id = update.message.from_user.id
-    user_name = update.message.from_user.name
+    if update.message:
+        user_id = update.message.from_user.id
+        user_name = update.message.from_user.name
+    else:
+        user_id = 0
+        user_name = ''
+
     chat_id = update.effective_chat.id
     return arguments, user_id, user_name, chat_id
 
@@ -24,3 +28,11 @@ def get_chat_id_item_string(chat_id):
 
 def get_user_id_string(user_id):
     return 'u' + str(user_id)
+
+
+def get_open_jio_name_string(jio_name):
+    return '<b>' + '🍕 ' + jio_name + '</b>' + '\n\n'
+
+
+def get_finalised_jio_name_string(jio_name):
+    return '<b>' + '🍕 ' + jio_name + '</b> [finalised] \n' + "<i>Jio is finalised, indicate payment using '/paid'</i>\n\n"
