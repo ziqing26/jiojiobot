@@ -6,7 +6,14 @@ import requests
 import logging
 from functions import *
 import os
-PORT = int(os.environ.get('PORT', 5000))
+ON_HEROKU = os.environ.get('ON_HEROKU')
+if ON_HEROKU:
+    # get the heroku port
+    # as per OP comments default is 17995
+    port = int(os.environ.get("PORT", 17995))
+else:
+    port = 6379  # 3000
+# PORT = int(os.environ.get('PORT', 8443))
 
 # r = redis.Redis(host='localhost', port=6379)
 r = redis.from_url(os.environ.get("REDIS_URL"))
@@ -57,7 +64,7 @@ dispatcher.add_handler(cancel_handler)
 
 # # Start the Bot
 updater.start_webhook(listen="0.0.0.0",
-                      port=int(PORT),
+                      port=int(port),
                       url_path=bot_token)
 updater.bot.setWebhook(
     'https://floating-thicket-85827.herokuapp.com/' + bot_token)
