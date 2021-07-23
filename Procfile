@@ -1,1 +1,1 @@
-web: python3 jiojiobot.py
+worker: python3 jiojiobot.py
