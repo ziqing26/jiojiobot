@@ -23,7 +23,7 @@ bot_token = "1843778002:AAFxOoXX7xWTubiMmULqkTlQ9U0267zHa4I"
 
 # Setting up our logger
 logging.basicConfig(format='%(asctime)s - %(name)s - %(levelname)s - %(message)s',
-                    level=logging.INFO)
+                    level=logging.DEBUG)
 logger = logging.getLogger(__name__)
 
 
