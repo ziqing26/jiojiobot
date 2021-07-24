@@ -69,9 +69,10 @@ def main():
     # # Start the Bot
     updater.start_webhook(listen="0.0.0.0",
                           port=int(PORT),
-                          url_path=bot_token)
-    updater.bot.setWebhook(
-        'https://floating-thicket-85827.herokuapp.com/' + bot_token)
+                          url_path=bot_token,
+                          webhook_url='https://floating-thicket-85827.herokuapp.com/' + bot_token)
+    # updater.bot.setWebhook(
+    #     'https://floating-thicket-85827.herokuapp.com/' + bot_token)
 
     updater.idle()
 
