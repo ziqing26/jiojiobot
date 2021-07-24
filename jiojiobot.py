@@ -6,7 +6,7 @@ import requests
 import logging
 from functions import *
 import os
-PORT = int(os.environ.get('PORT', '8443'))
+PORT = int(os.environ.get('PORT', '5000'))
 # ON_HEROKU = os.environ.get('ON_HEROKU')
 # if ON_HEROKU:
 #     # get the heroku port
@@ -28,6 +28,7 @@ logger = logging.getLogger(__name__)
 
 
 def main():
+    r = redis.from_url(os.environ.get("REDIS_URL"))
     # Setting up their polling stuff
     updater = Updater(token=bot_token, use_context=True)
     dispatcher = updater.dispatcher
